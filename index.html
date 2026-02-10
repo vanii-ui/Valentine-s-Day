@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Love Slides 💖</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+body{
+  font-family:'Comic Sans MS',cursive;
+  background:linear-gradient(135deg,#ffd6e0,#ffeaf1);
+  min-height:100vh;
+  margin:0;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+}
+.container{
+  width:92%;
+  max-width:420px;
+  background:#fff;
+  border-radius:25px;
+  padding:25px 20px;
+  box-shadow:0 10px 25px rgba(0,0,0,0.15);
+  text-align:center;
+}
+.slide{display:none;}
+.slide.active{display:block;}
+input{
+  width:90%;
+  padding:12px;
+  margin:8px 0;
+  border-radius:20px;
+  border:1px solid #ccc;
+  text-align:center;
+}
+button{
+  padding:10px 22px;
+  border-radius:22px;
+  background:#ff4d6d;
+  color:#fff;
+  border:none;
+  margin-top:10px;
+  font-size:16px;
+}
+.answers{
+  background:#fff0f5;
+  padding:15px;
+  border-radius:15px;
+  text-align:left;
+  font-size:14px;
+}
+</style>
+</head>
+
+<body>
+<div class="container">
+
+<!-- SLIDE 1 -->
+<div class="slide active">
+  <h1>🩵 Welcome My Love 🖤</h1>
+  <input id="n1" placeholder="Your name">
+  <input id="n2" placeholder="Partner name">
+  <button onclick="checkName()">Enter 💕</button>
+</div>
+
+<!-- QUESTIONS -->
+<div class="slide">
+  <h2>When did you first feel I was special to you?</h2>
+  <input id="a1">
+  <button onclick="saveAns(0)">Next</button>
+</div>
+
+<div class="slide">
+  <h2>What is your favourite memory with me?</h2>
+  <input id="a2">
+  <button onclick="saveAns(1)">Next</button>
+</div>
+
+<div class="slide">
+  <h2>How do you feel when I am with you?</h2>
+  <input id="a3">
+  <button onclick="saveAns(2)">Next</button>
+</div>
+
+<div class="slide">
+  <h2>What do you love the most about me?</h2>
+  <input id="a4">
+  <button onclick="saveAns(3)">Next</button>
+</div>
+
+<!-- SUBMIT -->
+<div class="slide">
+  <h2>One word to describe our love?</h2>
+  <input id="a5">
+  <button onclick="saveAns(4)">Submit 💞</button><br>
+  <button onclick="showAnswers()">View Score 💖</button>
+</div>
+
+<!-- VIEW SCORE SLIDE -->
+<div class="slide">
+  <h1>❣️ Your Sweet Answers ❣️</h1>
+  <div class="answers" id="answerBox"></div>
+  <p>📸 Take screenshot 💘 send me 💌🎀 </p>
+  <button onclick="next()">Next 💖</button>
+</div>
+
+<!-- SLIDE 7 -->
+<div class="slide">
+  <h1>❣️ You are my today, my tomorrow & my forever ❣️</h1>
+  <button onclick="next()">Next 💖</button>
+</div>
+
+<!-- ANNIVERSARY -->
+<div class="slide">
+  <h1>💞 Happy First Love Anniversary 💞</h1>
+  <p>✨🔐One year of smiles, memories, and us. Always us ✨</p>
+  <p>🫂😘🫶🏻</p>
+  <button onclick="next()">Click Here 🌹</button>
+</div>
+
+<!-- FINAL -->
+<div class="slide">
+  <h1>🩵🖤 I Love You purushaaa 🩵🖤</h1>
+  <p>Always & Forever u only 💐</p>
+  <p>Till My last 7 Minutes </p>
+  <p>🐒 kuttyyy 💋💋</p>
+</div>
+
+</div>
+
+<script>
+let current=0;
+const slides=document.querySelectorAll(".slide");
+let answers=[];
+
+function next(){
+  slides[current].classList.remove("active");
+  current++;
+  slides[current].classList.add("active");
+}
+
+function checkName(){
+  if(n1.value && n2.value) next();
+  else alert("Both names please 😘");
+}
+
+function saveAns(i){
+  answers[i]=document.getElementById("a"+(i+1)).value;
+  next();
+}
+
+function showAnswers(){
+  document.getElementById("answerBox").innerHTML=`
+  💖 <b>Special Moment:</b> ${answers[0]}<br><br>
+  💖 <b>Favourite Memory:</b> ${answers[1]}<br><br>
+  💖 <b>Feeling With You:</b> ${answers[2]}<br><br>
+  💖 <b>Love Most:</b> ${answers[3]}<br><br>
+  💖 <b>One Word:</b> ${answers[4]}
+  `;
+  next();
+}
+</script>
+
+</body>
+</html>
